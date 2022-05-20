@@ -1,0 +1,2 @@
+This is my attempt at a flask app. It's supposed to be an app that I use with my wife to track the boardgames we've played and who has won which ones and how many.
+I'm not quite sure how to accurately define the ORM relationships.
