@@ -1,4 +1,5 @@
 from src import create_app
+import pytest
 
 
 @pytest.fixture
