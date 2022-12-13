@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+{% endblock %}
+
+{% block title %} Update Game Sesh Info {% endblock %}
+
+
+{% block content %}
+
+<h1>Add a new game session</h1>
+<div class="container">
+
+    <div class="player-select">
+        <h2>Select your players </h2>
+        <form class="form" action="/match" method="POST">
+            <div class="player1">
+                <label for="player1"> Select a player</label>
+                <select name="player1" id="player1">
+                    <option value=" "></option>
+                    {% for player in players %}
+                    <option value="{{ player.id }}">{{ player.fname+' '+player.lname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="player2">
+                <label for="player2"> Select a player</label>
+                <select name="player2" id="player2">
+                    <option value=" "></option>
+                    {% for player in players %}
+                    <option value="{{ player.id }}">{{ player.fname+' '+player.lname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="player3">
+                <label for="player3"> Select a player</label>
+                <select name="player3" id="player3">
+                    <option value=" "></option>
+                    {% for player in players %}
+                    <option value="{{ player.id }}">{{ player.fname+' '+player.lname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="player4">
+                <label for="player4"> Select a player</label>
+                <select name="player4" id="player4">
+                    <option value=" "></option>
+                    {% for player in players %}
+                    <option value="{{ player.id }}">{{ player.fname+' '+player.lname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <br>
+            <div class="game">
+                <label for="game"> Select a Game</label>
+                <select name="game" id="game">
+                    <option value=" "></option>
+                    <option value="catan">Catan</option>
+                    <option value="connect 4">Connect 4</option>
+                    <option value="formation">Formation</option>
+                    <option value="monopoly_deal">Monoploy Deal</option>
+                    <option value="nerts">Nerts</option>
+                    <option value="spot_it">Spot It</option>
+                </select>
+            </div>
+            <br>
+            <br>
+            <div class="winner">
+                <label for="winner"> Select a player</label>
+                <select name="winner" id="winner">
+                    <option value=" "></option>
+                    {% for player in players %}
+                    <option value="{{ player.id }}">{{ player.fname+' '+player.lname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <br>
+            <input type="submit" value="Update Session" class="btn btn-primary">
+        </form>
+
+        {% endblock %}

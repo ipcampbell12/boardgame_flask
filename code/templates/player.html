@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='player.css') }}">
+{% endblock %}
+
+{% block title %} Player {% endblock %}
+
+
+{% block content %}
+
+<h1> Add a New Player</h1>
+
+<div class="container">
+    <div class="chart">
+        <h2>Players</h2>
+        <table class="table">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Age</th>
+                <th>Created</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+            {% for player in players %}
+            <tr>
+                <td>{{ player.fname }}</td>
+                <td>{{ player.lname }}</td>
+                <td>{{ player.gender }}</td>
+                <td>{{ player.status }}</td>
+                <td>{{ player.age }}</td>
+                <td>{{ player.created.date() }}</td>
+                <td><a href="/delete/{{player.id}}"> Delete</a></td>
+                <td><a href="/update/{{player.id}}"> Update</a></td>
+
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- FLASH: PLAYER REMOVED-->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'removal' %}
+        <div class="alert alert-success alter-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true"> &times;</span>
+            </button>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <!-- FLASH: ALL PLAYERS REMOVE -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'removal2' %}
+        <div class="alert alert-success alter-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true"> &times;</span>
+            </button>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <!-- FLASH: PLAYER ADDED -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'player' %}
+        <div class="alert alert-success alter-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true"> &times;</span>
+            </button>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <!-- FLASH: PLAYER UPDATED -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'updated' %}
+        <div class="alert alert-success alter-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true"> &times;</span>
+            </button>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    </div>
+    <div class="add">
+        <h2>Add new player</h2>
+        <form class='form' action="/player" method="POST">
+            <input type="text" name="fname" id="fname" class="form">
+            <br>
+            <br>
+            <input type="text" name="lname" id="lname" class="form">
+            <br>
+            <br>
+            <select name="gender" id="gender">
+                <option value="female">female</option>
+                <option value="male">male</option>
+            </select>
+            <br>
+            <br>
+            <select name="status" id="status">
+                <option value="family">family</option>
+                <option value="guest">guest</option>
+            </select>
+            <br>
+            <br>
+            <select name="age" id="age">
+                <option value="above_18">Above 18</option>
+                <option value="below_18">Below 18</option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Add Player" class="btn btn-primary">
+        </form>
+        <br>
+        <br>
+        <br>
+        <form class="form" action="/player" method="GET">
+            <button class="btn btn-primary"> <a href="/delete_all" style="color: white; text-decoration: none;">
+                    Clear Contents</a></button>
+        </form>
+
+        <br>
+        <br>
+        <br>
+        <div class="home">
+            <form class="form" action="/" method="GET">
+                <button class="btn btn-primary"> Return to home</button>
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

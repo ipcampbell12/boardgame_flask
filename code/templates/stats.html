@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='stats.css') }}">
+{% endblock %}
+
+{% block title %} Stats Page {% endblock %}
+
+{% block content %}
+<h1>See Game Stats</h1>
+<div class="home">
+    <div class="home">
+        <form class="form" action="/" method="GET">
+            <button class='btn btn-primary'> Return to home</button>
+        </form>
+
+    </div>
+</div>
+
+<div class='container'>
+
+    <div class="leaders">
+
+        <h2>Games Played</h2>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Games Played
+            </tr>
+            {% for play in played %}
+            <tr>
+                <td>{{ play['name'] }}</td>
+                <td>{{ play['games_played'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="leaders">
+
+        <h2>Leader Board</h2>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Games Won
+            </tr>
+            {% for won in wins %}
+            <tr>
+                <td>{{ won['name'] }}</td>
+                <td>{{ won['games_won'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+    <div class="info">
+
+        <h2>Game Info</h2>
+        <br>
+        <br>
+        <br>
+        {% for num in total %}
+
+        <span> Total Number of Games Played: <strong>{{ num }}</strong></span>
+        {% endfor %}
+        <br>
+        <br>
+        {% for num1 in player_total %}
+
+        <span> Total Number of Players: <strong>{{ num1 }}</strong></span>
+        {% endfor %}
+        <br>
+        <br>
+        {% for num2 in most %}
+
+        <span> Most Played Game: <strong>{{ num2 }}</strong></span>
+        {% endfor %}
+
+    </div>
+
+
+
+
+</div>
+
+
+{% endblock %}

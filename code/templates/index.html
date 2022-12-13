@@ -1,0 +1,58 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block title %} Home {% endblock %}
+
+
+
+{% block content %}
+
+<div class="container">
+
+
+    <h1> Boardgame App </h1>
+    <h2>Enter your game information below</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>Add a new player</h3>
+            <div class="form-button">
+                <form class="form" action="/player" method="GET">
+                    <button class="btn btn-primary">Add Player</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="card">
+            <h3>Add Game Session</h3>
+            <div class="form-button">
+                <form class="form" action="/match" method="GET">
+                    <button class="btn btn-primary">Add Game Session</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="card">
+            <h3>See Game Log</h3>
+            <div class="form-button">
+                <form class="form" action="/gamelog" metho="GET">
+                    <button class="btn btn-primary">See Game Log</button>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <h3>See Game Stats</h3>
+            <div class="form-button">
+                <form class="form" action="/stats" metho="GET">
+                    <button class="btn btn-primary">See Stats</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>~
+
+{% endblock %}

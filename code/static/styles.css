@@ -1,0 +1,55 @@
+body {
+    background-color: gainsboro;
+}
+
+h1 {
+    text-align: center;
+    margin: 2%;
+    padding: 2%;
+}
+
+h2 {
+    text-align: center;
+    margin: 1%;
+    padding: 1%;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    bottom: -150px;
+}
+
+.card {
+    text-align: center;
+    margin: 2%;
+    padding: 5%;
+    background-color: lightblue;
+    border-radius: .75rem;
+    border: none;
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, .5);
+}
+
+.card h3 {
+    margin-bottom: 30px;
+    padding: 1px;
+}
+
+.form-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
+.card form {
+    margin-top: 10px;
+    padding: 1px;
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+
+}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+{% endblock %}
+
+{% block title %} Update Player Info {% endblock %}
+
+
+{% block content %}
+
+<div class="update">
+
+    <h2>Update Player</h2>
+    <form class='player-update' action="/update/{{player.id}}" method="POST">
+        <input type="text" name="fname" id="fname" value="{{player.fname}}" class="form">
+        <br>
+        <br>
+        <input type="text" name="lname" id="lname" value="{{player.lname}}" class="form">
+        <br>
+        <br>
+        <select name="gender" id="gender">
+            <option value="none" selected disabled hidden>Select an Option</option>
+            <option value="female">female</option>
+            <option value="male">male</option>
+        </select>
+        <br>
+        <br>
+        <select name="status" id="status">
+            <option value="none" selected disabled hidden>Select an Option</option>
+            <option value="family">family</option>
+            <option value="guest">guest</option>
+        </select>
+        <br>
+        <br>
+        <select name="age" id="age">
+            <option value="none" selected disabled hidden>Select an Option</option>
+            <option value="above_18">Above 18</option>
+            <option value="below_18">Below 18</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Update Player" class="btn btn-primary">
+    </form>
+
+
+    <div class="home">
+        <form class="form" action="/player" method="GET">
+            <button class="btn btn-primary"> Return to Player Page</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

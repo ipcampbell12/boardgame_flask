@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='stats.css') }}">
+{% endblock %}
+
+{% block title %} Game Log Page {% endblock %}
+
+{% block content %}
+
+
+
+<h1>Game Log</h1>
+<div class="home">
+    <div class="home">
+        <form class="form" action="/" method="GET">
+            <button class='btn btn-primary'> Return to home</button>
+        </form>
+
+    </div>
+</div>
+<div class="container">
+
+    <div class="chart">
+        <h2>Game Log</h2>
+        <table class="table">
+            <tr>
+
+                <th>Date</th>
+                <th>Game</th>
+                <th>Winner</th>
+                <th>Players</th>
+                <th>Update</th>
+
+            </tr>
+            {% for match in winlog %}
+            <tr>
+
+                <td>{{ match['date'] }}</td>
+                <td>{{ match['game'] }}</td>
+                <td>{{ match['winner'] }}</td>
+                <td>{{ match['players'] }}</td>
+                <td><a href="/update_match/{{match.id}}">Update</a></td>
+
+
+            </tr>
+            {% endfor %}
+        </table>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
